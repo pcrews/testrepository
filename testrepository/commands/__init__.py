@@ -49,8 +49,6 @@ def _find_command(cmd_name):
     modname = "testrepository.commands.%s" % cmd_name
     try:
         _temp = __import__(modname, globals(), locals(), [classname])
-    except ImportError:
-        raise KeyError("Could not import command module %s" % modname)
     result = getattr(_temp, classname, None)
     if result is None:
         raise KeyError(
