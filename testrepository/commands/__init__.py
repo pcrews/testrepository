@@ -47,8 +47,7 @@ def _find_command(cmd_name):
     cmd_name = cmd_name.replace('-', '_')
     classname = "%s" % cmd_name
     modname = "testrepository.commands.%s" % cmd_name
-    try:
-        _temp = __import__(modname, globals(), locals(), [classname])
+    _temp = __import__(modname, globals(), locals(), [classname])
     result = getattr(_temp, classname, None)
     if result is None:
         raise KeyError(
